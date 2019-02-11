@@ -1,5 +1,23 @@
-include:
-  - remote: 'https://arp.to/@ci/base.yml'
+image:
+  name: docker/compose:1.23.2
+  entrypoint: ["sh", "-c"]
+variables:
+  DOCKER_HOST: tcp://docker:2375
+services:
+  - docker:dind
+before_script:
+  - eval "echo BEFORE_SCRIPT APPLICATION"
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - |
+    ENCODED_KEY=`echo -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
+    export BUILD_OPTS=" \
+      --build-arg REGISTRY_BASE=${CI_REGISTRY}/${CI_PROJECT_NAMESPACE} \
+      --build-arg REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} \
+      --build-arg PROJECT_PATH=${CI_PROJECT_PATH} \
+      --build-arg PROJECT_NAMESPACE=${CI_PROJECT_NAMESPACE} \
+      --build-arg PROJECT_NAME=${CI_PROJECT_NAME} \
+      --build-arg DEPLOY_KEY=$ENCODED_KEY \
+    "
 
 container-image:
   stage: build
