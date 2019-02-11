@@ -1,0 +1,11 @@
+image:
+  name: docker/compose:1.23.2
+  entrypoint: ["sh", "-c"]
+variables:
+  DOCKER_HOST: tcp://docker:2375
+services:
+  - docker:dind
+before_script:
+  - eval "BEFORE_SCRIPT DOCKER"
+after_script:
+  - eval "AFTER_SCRIPT DOCKER"

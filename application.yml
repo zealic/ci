@@ -1,0 +1,10 @@
+include:
+  - remote: 'https://arp.to/ci.hasharp.com/base.yml'
+
+container-image:
+  stage: build
+  only:
+    - master
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE}:latest ${BUILD_OPTS} .
+    - docker push  ${CI_REGISTRY_IMAGE}:latest
