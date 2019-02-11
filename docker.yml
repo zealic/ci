@@ -5,7 +5,3 @@ variables:
   DOCKER_HOST: tcp://docker:2375
 services:
   - docker:dind
-before_script:
-  - eval "BEFORE_SCRIPT DOCKER"
-after_script:
-  - eval "AFTER_SCRIPT DOCKER"

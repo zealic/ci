@@ -6,7 +6,6 @@ variables:
 services:
   - docker:dind
 before_script:
-  - eval "echo BEFORE_SCRIPT APPLICATION"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
   - |
     ENCODED_KEY=`echo -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
