@@ -1,5 +1,5 @@
 include:
-  - remote: 'https://arp.to/ci.hasharp.com/base.yml'
+  - remote: 'https://arp.to/@ci/base.yml'
 
 container-image:
   stage: build

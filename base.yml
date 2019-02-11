@@ -1,5 +1,5 @@
 include:
-  - remote: 'https://arp.to/ci/docker.yml'
+  - remote: 'https://arp.to/@ci/docker.yml'
 
 before_script:
   - eval "BEFORE_SCRIPT BASE"
