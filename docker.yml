@@ -6,6 +6,7 @@ variables:
 services:
   - docker:dind
 
+# global *_script will overwrite by job defined *_script
 before_script:
   - wget -qO- https://arp.to/@ci/scripts/before.yml | sh
 after_script:
