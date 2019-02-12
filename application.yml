@@ -8,9 +8,9 @@ services:
 
 # global *_script will overwrite by job defined *_script
 before_script:
-  - wget -qO- https://arp.to/@ci/scripts/before.yml | sh
+  - wget -qO- https://arp.to/@ci/scripts/before.sh | sh
 after_script:
-  - wget -qO- https://arp.to/@ci/scripts/after.yml | sh
+  - wget -qO- https://arp.to/@ci/scripts/after.sh | sh
 
 container-image:
   stage: build
