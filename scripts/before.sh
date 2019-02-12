@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+ENCODED_KEY=`echo -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
+
+# Docker options
+export BUILD_OPTS=" \
+  --build-arg REGISTRY_BASE=${CI_REGISTRY}/${CI_PROJECT_NAMESPACE} \
+  --build-arg REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} \
+  --build-arg PROJECT_PATH=${CI_PROJECT_PATH} \
+  --build-arg PROJECT_NAMESPACE=${CI_PROJECT_NAMESPACE} \
+  --build-arg PROJECT_NAME=${CI_PROJECT_NAME} \
+  --build-arg DEPLOY_KEY=$ENCODED_KEY \
+"
+
+# Install make
+apk add make
