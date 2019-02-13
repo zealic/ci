@@ -5,6 +5,7 @@ ENCODED_KEY=`echo -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
 
 # Docker options
 export BUILD_OPTS=" \
+  --build-arg CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} \
   --build-arg REGISTRY_BASE=${CI_REGISTRY}/${CI_PROJECT_NAMESPACE} \
   --build-arg REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} \
   --build-arg PROJECT_PATH=${CI_PROJECT_PATH} \
