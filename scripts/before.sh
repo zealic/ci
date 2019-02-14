@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
+# Login Gitlab
 docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
+# Encode deploy key without newline
 ENCODED_KEY=`echo -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
 
 # Docker options

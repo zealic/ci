@@ -1,10 +1,14 @@
 image:
   name: docker/compose:1.23.2
   entrypoint: ["sh", "-c"]
-variables:
-  DOCKER_HOST: tcp://docker:2375
 services:
   - docker:dind
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  # When using dind, it's wise to use the overlayfs driver for
+  # improved performance.
+  # See also: https://docs.gitlab.com/ce/ci/docker/using_docker_build.html
+  DOCKER_DRIVER: overlay2
 
 # global *_script will overwrite by job defined *_script
 before_script:
