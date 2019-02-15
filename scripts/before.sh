@@ -30,5 +30,3 @@ export BUILD_OPTS=" \
 if [[ -e `which make` ]]; then
   apk add make
 fi
-
-sleep 3000
