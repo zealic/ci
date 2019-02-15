@@ -27,6 +27,6 @@ export BUILD_OPTS=" \
 "
 
 # Install make
-if [[ ! -e `which make` ]]; then
+if [[ -e `which make` ]]; then
   apk add make
 fi
