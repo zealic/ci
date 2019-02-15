@@ -12,9 +12,9 @@ variables:
 
 # global *_script will overwrite by job defined *_script
 before_script:
-  - eval "$(wget -qO- arp.to/@ci/scripts/before.sh)"
+  - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
 after_script:
-  - eval "$(wget -qO- arp.to/@ci/scripts/after.sh)"
+  - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
 
 container-image:
   stage: build
