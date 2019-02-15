@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 # Auto detect docker service host
 if nc -z docker 2375 2>/dev/null; then
-    export DOCKER_HOST=tcp://docker:2375
+  export DOCKER_HOST=tcp://docker:2375
 elif nc -z localhost 2375 2>/dev/null ; then
-    # see also:
-    # - https://docs.gitlab.com/runner/executors/kubernetes.html#using-dockerdind
-    # - https://gitlab.com/gitlab-org/gitlab-runner/issues/2623
-    export DOCKER_HOST=tcp://127.0.0.1:2375
+  # see also:
+  # - https://docs.gitlab.com/runner/executors/kubernetes.html#using-dockerdind
+  # - https://gitlab.com/gitlab-org/gitlab-runner/issues/2623
+  export DOCKER_HOST=tcp://127.0.0.1:2375
 fi
 
 # Login Gitlab
