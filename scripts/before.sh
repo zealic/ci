@@ -8,6 +8,7 @@ elif nc -z localhost 2375 2>/dev/null ; then
     # - https://gitlab.com/gitlab-org/gitlab-runner/issues/2623
     export DOCKER_HOST=tcp://localhost:2375
 fi
+netstat -nltp
 
 # Login Gitlab
 docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
