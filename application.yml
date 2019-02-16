@@ -21,6 +21,5 @@ container-image:
   only:
     - master
   script:
-    - env
     - docker build -t ${CI_REGISTRY_IMAGE}:latest ${BUILD_OPTS} .
     - docker push  ${CI_REGISTRY_IMAGE}:latest
