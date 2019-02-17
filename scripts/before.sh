@@ -35,6 +35,6 @@ if [[ -e `which curl` ]]; then
   PACKAGES="${PACKAGES} curl"
 fi
 
-if [[ ! -z $PACKAGES ]]; then
+if [[ ! -z "${PACKAGES}" ]]; then
   apk add ${PACKAGES}
 fi
