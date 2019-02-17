@@ -28,11 +28,11 @@ export BUILD_OPTS=" \
 
 # Install packages
 if [[ -e `which make` ]]; then
-  PACKAGES=${PACKAGES} make
+  PACKAGES="${PACKAGES} make"
 fi
 
 if [[ -e `which curl` ]]; then
-  PACKAGES=${PACKAGES} curl
+  PACKAGES="${PACKAGES} curl"
 fi
 
 if [[ ! -z $PACKAGES ]]; then
