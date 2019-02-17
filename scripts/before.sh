@@ -26,7 +26,15 @@ export BUILD_OPTS=" \
   --build-arg DEPLOY_KEY=$ENCODED_KEY \
 "
 
-# Install make
+# Install packages
 if [[ -e `which make` ]]; then
-  apk add make
+  PACKAGES=${PACKAGES} make
+fi
+
+if [[ -e `which curl` ]]; then
+  PACKAGES=${PACKAGES} curl
+fi
+
+if [[ ! -z $PACKAGES ]]; then
+  apk add ${PACKAGES}
 fi
