@@ -4,7 +4,10 @@ image:
 services:
   - name: docker:dind
     alias: docker
-    command: ["--dns", "8.8.8.8"]
+    command: [
+      "--dns", "8.8.8.8",
+      "--dns-search", "lan"
+    ]
 variables:
   DOCKER_HOST: tcp://docker:2375
   # When using dind, it's wise to use the overlayfs driver for
