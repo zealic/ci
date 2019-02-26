@@ -13,12 +13,12 @@ variables:
 # global *_script will overwrite by job defined *_script
 before_script:
   - |
-    # Ensuring environment...
+    # Ensuring network...
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
       # see also: https://github.com/jetstack/cert-manager/issues/1161
       if [[ $(grep 'search' /etc/resolv.conf | awk '{print NF}') -ge 5 ]]; then
-        sed -i -e '/nameserver/!d' /etc/resolv.conf
+        echo "$(sed -e '/nameserver/!d' /etc/resolv.conf)" > /etc/resolv.conf
       fi
     fi
   - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
