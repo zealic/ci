@@ -2,7 +2,9 @@ image:
   name: docker/compose:1.23.2
   entrypoint: ["sh", "-c"]
 services:
-  - docker:dind
+  - name: docker:dind
+    alias: docker
+    command: ["--dns", "8.8.8.8"]
 variables:
   DOCKER_HOST: tcp://docker:2375
   # When using dind, it's wise to use the overlayfs driver for
