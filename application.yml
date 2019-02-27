@@ -5,9 +5,9 @@ services:
   - name: docker:dind
     alias: docker
     command: [
-      "--mtu", "1400", # https://github.com/docker-library/docker/issues/103
-      "--dns", "8.8.8.8",
-      "--dns-search", "lan"
+      "--mtu=1400", # https://github.com/docker-library/docker/issues/103
+      "--dns=8.8.8.8",
+      "--dns-search=lan"
     ]
 variables:
   DOCKER_HOST: tcp://docker:2375
