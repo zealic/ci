@@ -22,7 +22,7 @@ before_script:
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
       # see also: https://github.com/jetstack/cert-manager/issues/1161
-      if [[ $(grep 'search' /etc/resolv.conf | awk '{print NF}') -ge 5 ]]; then
+      if [[ "$(grep 'search' /etc/resolv.conf | awk '{print NF}')" -ge 5 ]]; then
         echo "$(sed -e '/nameserver/!d' /etc/resolv.conf)" > /etc/resolv.conf
       fi
     fi
