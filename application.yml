@@ -19,10 +19,10 @@ variables:
 before_script:
   - |
     # Ensuring network...
+    cat /etc/resolv.conf
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
       # see also: https://github.com/jetstack/cert-manager/issues/1161
-      cat /etc/resolv.conf
       if [[ "0$(grep 'search' /etc/resolv.conf | awk '{print NF}')" -ge 5 ]]; then
         echo "$(sed -e '/nameserver/!d' /etc/resolv.conf)" > /etc/resolv.conf
       fi
