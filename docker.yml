@@ -19,6 +19,8 @@ variables:
 before_script:
   - |
     # Ensuring network...
+    set -x
+    echo "$(cat < /etc/resolv.conf)"
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
       # see also: https://github.com/jetstack/cert-manager/issues/1161
