@@ -18,7 +18,7 @@ variables:
 # global *_script will overwrite by job defined *_script
 before_script:
   - |
-    # Ensuring network...
+    set -x
     echo "$(cat < /etc/resolv.conf)"
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
