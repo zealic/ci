@@ -27,8 +27,10 @@ before_script:
       fi
     fi
   - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
+  - eval "$BEFORE_SCRIPT"
 after_script:
   - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
+  - eval "$AFTER_SCRIPT"
 
 container-image:
   stage: build
