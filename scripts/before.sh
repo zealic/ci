@@ -40,4 +40,6 @@ if [[ ! -z "${PACKAGES}" ]]; then
 fi
 
 # User defined before script
-eval "$BEFORE_SCRIPT"
+if [[ ! -z "$BEFORE_SCRIPT" ]]; then
+  eval "$BEFORE_SCRIPT"
+fi
