@@ -10,7 +10,7 @@ elif nc -z localhost 2375 2>/dev/null ; then
 fi
 
 # Login Gitlab
-docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY > /dev/null
 
 # Encode deploy key without newline
 ENCODED_KEY=`printf -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
