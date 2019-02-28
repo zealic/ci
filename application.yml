@@ -19,20 +19,16 @@ variables:
 before_script:
   - |
     # Ensuring network...
-    set -x
-    echo "$(cat < /etc/resolv.conf)"
     if [[ -f /etc/alpine-release ]]; then
       # Handle search domain error
       # see also: https://github.com/jetstack/cert-manager/issues/1161
-      if [[ "0$(grep 'search' /etc/resolv.conf | awk '{print NF}')" -ge 5 ]]; then
+      if [[ "0$(grep '^search' /etc/resolv.conf | awk '{print NF}')" -ge 5 ]]; then
         echo "$(sed -e '/nameserver/!d' /etc/resolv.conf)" > /etc/resolv.conf
       fi
     fi
   - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
-  - eval "$BEFORE_SCRIPT"
 after_script:
   - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
-  - eval "$AFTER_SCRIPT"
 
 container-image:
   stage: build

@@ -38,3 +38,6 @@ fi
 if [[ ! -z "${PACKAGES}" ]]; then
   apk add ${PACKAGES}
 fi
+
+# User defined before script
+eval "$BEFORE_SCRIPT"
