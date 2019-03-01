@@ -27,6 +27,10 @@ export BUILD_OPTS=" \
 "
 
 # Install packages
+if [[ -e `which bash` ]]; then
+  PACKAGES="${PACKAGES} bash"
+fi
+
 if [[ -e `which make` ]]; then
   PACKAGES="${PACKAGES} make"
 fi
