@@ -12,6 +12,15 @@ fi
 # Login Gitlab
 docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY 2> /dev/null
 
+# Write deploy key
+if [[ ! -z "$DEPLOY_KEY" ]] && [[ ! -e ~/.ssh/id_rsa ]]; then
+  if [[ ! -d ~/.ssh ]]; then
+    mkdir ~/.ssh
+  fi
+  echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+  chmod 0600 ~/.ssh/id_rsa
+fi
+
 # Encode deploy key without newline
 ENCODED_KEY=`printf -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
 
