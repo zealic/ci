@@ -5,7 +5,6 @@ services:
   - name: docker:18.06-dind
     alias: docker
     command: [
-      "--dns=8.8.8.8",
       "--dns-search=lan"
     ]
 variables:
@@ -19,13 +18,7 @@ variables:
 before_script:
   - |
     # Ensuring network...
-    if [[ -f /etc/alpine-release ]]; then
-      # Handle search domain error
-      # see also: https://github.com/jetstack/cert-manager/issues/1161
-      if [[ "0$(grep '^search' /etc/resolv.conf | awk '{print NF}')" -ge 5 ]]; then
-        echo "$(sed -e '/nameserver/!d' /etc/resolv.conf)" > /etc/resolv.conf
-      fi
-    fi
+    : DO NOTHING
   - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
 after_script:
   - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
