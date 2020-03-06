@@ -1,6 +1,5 @@
 image:
   name: zealic/docker
-  pull: always
   entrypoint: ["sh", "-c"]
 services:
   - name: docker:19.03-dind
