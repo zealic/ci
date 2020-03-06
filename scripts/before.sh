@@ -31,7 +31,7 @@ if [[ ! -z "$DEPLOY_KEY" ]] && [[ ! -e ~/.ssh/id_rsa ]]; then
 fi
 
 # Encode deploy key without newline
-ENCODED_KEY=`printf -e "$DEPLOY_KEY" | base64 | tr -d '\n'`
+ENCODED_KEY=`awk -e 'BEGIN {print ENVIRON["DEPLOY_KEY"] }' | base64 | tr -d '\n'`
 
 # Docker options
 export BUILD_OPTS=" \
