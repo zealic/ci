@@ -14,7 +14,7 @@ elif nc -z localhost 2375 2>/dev/null ; then
 fi
 
 # Login Gitlab
-docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY 2> /dev/null
+docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY # 2> /dev/null
 ret=$?
 if [ $ret -ne 0 ]; then
   echo "Login Gitlab Registry failed."
