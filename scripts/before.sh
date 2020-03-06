@@ -15,6 +15,11 @@ fi
 
 # Login Gitlab
 docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY 2> /dev/null
+ret=$?
+if [ $ret -ne 0 ]; then
+  echo "Login Gitlab Registry failed."
+  exit $ret
+fi
 
 # Write deploy key
 if [[ ! -z "$DEPLOY_KEY" ]] && [[ ! -e ~/.ssh/id_rsa ]]; then
