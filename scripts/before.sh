@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
+if [[ ! -z $DEBUG ]]; then
+  set -x
+fi
+
 # Auto detect docker service host
 if nc -z docker 2375 2>/dev/null; then
   export DOCKER_HOST=tcp://docker:2375
