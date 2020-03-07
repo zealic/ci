@@ -18,9 +18,6 @@ variables:
 
 # global *_script will overwrite by job defined *_script
 before_script:
-  - |
-    # Ensuring network...
-    : DO NOTHING
   - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
 after_script:
   - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
