@@ -3,27 +3,12 @@ if [[ ! -z $DEBUG ]]; then
   set -x
 fi
 
-# Auto detect docker service host
-if nc -z docker 2375 2>/dev/null; then
-  export DOCKER_HOST=tcp://docker:2375
-  DOCKER_HOST=tcp://docker:2375
-elif nc -z localhost 2375 2>/dev/null ; then
-  # see also:
-  # - https://docs.gitlab.com/runner/executors/kubernetes.html#using-dockerdind
-  # - https://gitlab.com/gitlab-org/gitlab-runner/issues/2623
-  export DOCKER_HOST=tcp://localhost:2375
-  DOCKER_HOST=tcp://localhost:2375
-else
-  echo "Can not ensure docker host, use 127.0.0.1"
-  export DOCKER_HOST=tcp://127.0.0.1:2375
-  DOCKER_HOST=tcp://127.0.0.1:2375
-fi
-
 # Login Gitlab
-docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY 2> /tmp/docker-login.log
 ret=$?
 if [[ $ret -ne 0 ]]; then
   echo "Login Gitlab Registry failed."
+  cat /tmp/docker-login.log
   exit $ret
 fi
 
