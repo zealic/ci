@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
+# Allow error not exit
+set +e
+
+# Debug flag
 if [[ ! -z $DEBUG ]]; then
   set -x
 fi
