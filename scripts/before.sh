@@ -14,6 +14,7 @@ elif nc -z 127.0.0.1 2375 2>/dev/null ; then
   export DOCKER_HOST=tcp://127.0.0.1:2375
   DOCKER_HOST=tcp://127.0.0.1:2375
 else
+  echo "Can not ensure docker host, use 127.0.0.1"
   export DOCKER_HOST=tcp://127.0.0.1:2375
   DOCKER_HOST=tcp://127.0.0.1:2375
 fi
