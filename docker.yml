@@ -8,11 +8,13 @@ services:
       "--dns-search=lan"
     ]
 variables:
-  DOCKER_HOST: tcp://docker:2375
   # When using dind, it's wise to use the overlayfs driver for
   # improved performance.
   # See also: https://docs.gitlab.com/ce/ci/docker/using_docker_build.html
   DOCKER_DRIVER: overlay2
+  # Disable TLS for Docker >= 19.03
+  # See also: https://about.gitlab.com/releases/2019/07/31/docker-in-docker-with-docker-19-dot-03/
+  DOCKER_TLS_CERTDIR: ""
 
 # global *_script will overwrite by job defined *_script
 before_script:
