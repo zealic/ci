@@ -19,6 +19,6 @@ variables:
 
 # global *_script will overwrite by job defined *_script
 before_script:
-  - eval "$(wget -qO- https://arp.to/@ci/scripts/before.sh)"
+  - eval "$(wget -qO- https://raw.githubusercontent.com/zealic/ci/master/scripts/before.sh)"
 after_script:
-  - eval "$(wget -qO- https://arp.to/@ci/scripts/after.sh)"
+  - eval "$(wget -qO- https://raw.githubusercontent.com/zealic/ci/master/scripts/after.sh)"
