@@ -2,7 +2,7 @@ image:
   name: zealic/docker
   entrypoint: ["sh", "-c"]
 services:
-  - name: docker:19.03-dind
+  - name: docker:26-dind
     alias: docker
     command: [
       "--dns-search=lan"
